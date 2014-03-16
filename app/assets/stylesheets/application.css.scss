@@ -14,8 +14,13 @@
  */
 .search-box {
   width: 30%;
+  padding: 5px;
   .form-actions {
     input {
+      margin-top: 10px;
+    }
+
+    select {
       margin-top: 10px;
     }
   }
