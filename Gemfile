@@ -36,6 +36,7 @@ gem 'turbolinks'
 
 group :development, :test do
   gem 'debugger'
+  gem 'zeus', require: false
 end
 
 gem 'rails_12factor', group: :production
@@ -50,7 +51,6 @@ group :development do
   gem 'hpricot'
   gem 'ruby_parser'
   gem 'thin'
-  gem 'zeus', require: false
   gem 'capistrano'
   gem 'capistrano-ext'
   gem 'rvm-capistrano'

@@ -4,8 +4,11 @@ class Book < ActiveRecord::Base
   class << self
     def search params
       client = Openlibrary::Client.new
-
+      begin
       client.search search_params(params)
+      rescue Exception
+        nil
+      end
     end
 
     def search_params params

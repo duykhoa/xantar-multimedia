@@ -1,12 +1,12 @@
 %h1 Listing books
 .search-box
   = render 'search_form'
-%table
+%table.table.striped
   %thead
     %tr
-      %th
-      %th
-      %th
+      %th Name
+      %th Author
+      %th Subject
   %tbody
     -#- @books.each do |book|
       %tr
