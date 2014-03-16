@@ -33,6 +33,7 @@ gem 'openlibrary'
 gem 'pg'
 gem 'bootstrap-sass'
 gem 'turbolinks'
+gem 'fastimage'
 
 group :development, :test do
   gem 'debugger'
