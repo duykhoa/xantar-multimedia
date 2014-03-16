@@ -12,3 +12,11 @@
  *= require_tree .
  *= require "bootstrap"
  */
+.search-box {
+  width: 30%;
+  .form-actions {
+    input {
+      margin-top: 10px;
+    }
+  }
+}
