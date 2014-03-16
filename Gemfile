@@ -32,6 +32,7 @@ gem 'nokogiri'
 gem 'openlibrary'
 gem 'pg'
 gem 'bootstrap-sass'
+gem 'turbolinks'
 
 group :development do
   gem 'debugger'
@@ -60,6 +61,7 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'rspec-instafail'
+  gem 'rspec-rails'
   gem 'faker'
   gem 'shoulda'
   gem 'shoulda-matchers'
