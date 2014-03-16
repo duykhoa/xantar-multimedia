@@ -1,0 +1,14 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  reconnect: false
+  database: xantar_multimedia_development
+  pool: 5
+  username:
+  password:
+  host: localhost
+
+test: &test
+
+cucumber:
+  <<: *test
