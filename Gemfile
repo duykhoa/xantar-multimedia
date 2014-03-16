@@ -34,7 +34,7 @@ gem 'pg'
 gem 'bootstrap-sass'
 gem 'turbolinks'
 
-group :development do
+group :development, :test do
   gem 'debugger'
 end
 
