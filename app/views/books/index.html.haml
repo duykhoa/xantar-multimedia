@@ -12,6 +12,6 @@
     - @books.each do |book|
       %tr
         %td= image_tag cover_picture(book), alt: book.title
-        %td= book.title
+        %td= link_to book.title, book_path(book.edition_key.first)
         %td= book.author_name.join(', ') if book.author_name.is_a? Array
         %td= book.subject.join(', ') if book.subject

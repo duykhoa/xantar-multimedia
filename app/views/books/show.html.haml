@@ -1,4 +1,23 @@
-%p#notice= notice
-= link_to 'Edit', edit_book_path(@book)
-|
-\#{link_to 'Back', books_path}
+%h1
+  = @book['title']
+.cover
+  = image_tag cover(@book['cover'])
+%h4
+  Author:
+  - @book['authors'].each do |author|
+    = link_to author['name'], author['url']
+%h5
+  = subjects @book['subjects']
+%h5
+  Number of pages
+  = @book['number_of_pages']
+%h5
+  Publisher:
+  = publishers @book['publishers']
+%h5
+  Published date:
+  = @book['publish_date']
+%h5
+  Published place:
+  = published_place @book['publish_places']
+= link_to 'Back', session[:return_to]
