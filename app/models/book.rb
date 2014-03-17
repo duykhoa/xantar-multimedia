@@ -1,6 +1,6 @@
 class Book < ActiveRecord::Base
   CATEGORY = {title: "Name", author: "Author", subject: "Subject"}.freeze
-  PER_PAGE = 50
+  PER_PAGE = 10
 
   class << self
     def search params
