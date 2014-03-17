@@ -23,8 +23,7 @@ module Openlibrary
       data["docs"].each do |result|
         results << Hashie::Mash.new(result)
       end
-      results
+      [results, data["num_found"]]
     end
-
   end
 end

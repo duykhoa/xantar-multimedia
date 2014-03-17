@@ -1,10 +1,9 @@
 module ApplicationHelper
   def cover_picture book
-    if book
-      book.edition_key.each do |edition_key|
-        image_url = "http://covers.openlibrary.org/b/olid/#{edition_key}-S.jpg"
-        return image_url if exist_image_with_edition_key(edition_key)
-      end
+    if book && book.edition_key
+      edition_key = book.edition_key.first
+      image_url = "http://covers.openlibrary.org/b/olid/#{edition_key}-S.jpg"
+      return image_url if exist_image_with_edition_key(edition_key)
     end
     '/not_found.jpeg'
   end
