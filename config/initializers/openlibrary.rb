@@ -26,4 +26,13 @@ module Openlibrary
       [results, data["num_found"]]
     end
   end
+
+  module Books
+    require 'open-uri'
+
+    def book(olid)
+      url = "https://openlibrary.org/api/books?bibkeys=OLID:#{olid}&format=json&jscmd=data"
+      JSON.load(open(url)).values.first
+    end
+  end
 end
