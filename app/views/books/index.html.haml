@@ -2,7 +2,7 @@
 .search-box
   = render 'search_form'
 .paginate.pull-right
-  = "#{@total} results"
+  = "#{@total.to_i} results"
   - page = params[:page] || 1
   - next_page = page.to_i + 1
   - previous_page = page.to_i - 1
@@ -20,9 +20,10 @@
       %th Author
       %th Subject
   %tbody
-    - @books.each do |book|
-      %tr
-        %td= image_tag cover_picture(book), alt: book.title
-        %td= link_to book.title, book_path(book.edition_key.first)
-        %td= book.author_name.join(', ') if book.author_name.is_a? Array
-        %td= book.subject.join(', ') if book.subject
+    - if @books
+      - @books.each do |book|
+        %tr
+          %td= image_tag cover_picture(book), alt: book.title
+          %td= link_to book.title, book_path(book.edition_key.first)
+          %td= book.author_name.join(', ') if book.author_name.is_a? Array
+          %td= book.subject.join(', ') if book.subject

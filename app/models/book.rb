@@ -1,12 +1,11 @@
 class Book < ActiveRecord::Base
-  CATEGORY = {title: "Name", author: "Author", subject: "Subject"}.freeze
   PER_PAGE = 10
 
   class << self
-    def search params
+    def search(params)
       client = Openlibrary::Client.new
       begin
-        client.search search_params(params), page(params), PER_PAGE
+        search_by_priority params, client
       rescue Exception
         nil
       end
@@ -16,8 +15,26 @@ class Book < ActiveRecord::Base
       params.has_key?(:page) ? params[:page].to_i : 1
     end
 
-    def search_params params
-      params[:query]
+    # priorty: author, subject, normal search
+    def search_by_priority(params, client)
+      books, total = client.search params_find_by_author(params[:query]), page(params), PER_PAGE
+      if total == 0
+        books, total = client.search params_find_by_subject(params[:query]), page(params), PER_PAGE
+      end
+
+      if total == 0
+        books, total = client.search params[:query], page(params), PER_PAGE
+      end
+
+      [books, total]
+    end
+
+    def params_find_by_author(query)
+      {author: query}
+    end
+
+    def params_find_by_subject(query)
+      {subject: query}
     end
   end
 end

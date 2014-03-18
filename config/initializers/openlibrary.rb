@@ -1,4 +1,6 @@
 module Openlibrary
+  require 'open-uri'
+
   module Search
     # Access the Openlibrary free-text search.
     # This API is experimental but useful (http://openlibrary.org/dev/docs/api/search)
@@ -28,10 +30,17 @@ module Openlibrary
   end
 
   module Books
-    require 'open-uri'
-
     def book(olid)
       url = "https://openlibrary.org/api/books?bibkeys=OLID:#{olid}&format=json&jscmd=data"
+      JSON.load(open(url)).values.first
+    end
+  end
+
+  module Authors
+    # Find authors in Open Library by their key
+    #
+    def author(key)
+      url = "http://openlibrary.org/authors/#{key}.json"
       JSON.load(open(url)).values.first
     end
   end

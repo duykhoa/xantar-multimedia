@@ -5,7 +5,6 @@ class BooksController < ApplicationController
 
   def search
     @books, @total = Book.search params
-
     render 'index'
   end
 
