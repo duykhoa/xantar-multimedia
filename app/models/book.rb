@@ -17,11 +17,7 @@ class Book < ActiveRecord::Base
     end
 
     def search_params params
-      if params[:category].present? && CATEGORY.include?(params[:category].to_sym)
-        {params[:category].to_sym => params[:query]}
-      else
-        params[:query]
-      end
+      params[:query]
     end
   end
 end

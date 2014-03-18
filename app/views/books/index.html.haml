@@ -1,6 +1,17 @@
 %h1 Listing books
 .search-box
   = render 'search_form'
+.paginate.pull-right
+  = "#{@total} results"
+  - page = params[:page] || 1
+  - next_page = page.to_i + 1
+  - previous_page = page.to_i - 1
+
+  - if previous_page > 0
+    = link_to "Previous Page", search_path(params.merge(page: page.to_i - 1))
+  = "Page #{page}"
+  - if next_page <= (@total.to_f/Book::PER_PAGE).ceil
+    = link_to "Next Page", search_path(params.merge(page: page.to_i + 1))
 %table.table.table-striped
   %thead
     %tr
