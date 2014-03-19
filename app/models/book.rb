@@ -7,7 +7,6 @@ class Book < ActiveRecord::Base
       client = Openlibrary::Client.new
       begin
         if params[:category].present?
-          puts '===========', params[:category]
           client.search({params[:category].to_sym => params[:query]}, page(params), PER_PAGE)
         else
           search_by_priority params, client
