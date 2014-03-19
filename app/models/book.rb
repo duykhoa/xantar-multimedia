@@ -1,11 +1,17 @@
 class Book < ActiveRecord::Base
   PER_PAGE = 10
+  CATEGORY = {title: "Name", author: "Author", subject: "Subject"}.freeze
 
   class << self
     def search(params)
       client = Openlibrary::Client.new
       begin
-        search_by_priority params, client
+        if params[:category].present?
+          puts '===========', params[:category]
+          client.search({params[:category].to_sym => params[:query]}, page(params), PER_PAGE)
+        else
+          search_by_priority params, client
+        end
       rescue Exception
         nil
       end
